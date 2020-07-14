@@ -15,15 +15,16 @@ public class Hooks {
 
     @Before(value = "@db",order = 1)
     public void setUpDatabaseConnection(){
+
         System.out.println("------>BEFORE ANNOTATION: DB CONNECTION CREATED <--------");
     }
 
-    @After
+    @After(order = 1)
     public void tearDownScenario(){
         System.out.println("----> After annotation: Closing browser");
     }
 
-    @After("@db")
+    @After(value = "@db",order = 2)
     public void tearDownDataBaseConnection(){
         System.out.println("------>AFTER ANNOTATION: DB CONNECTION CREATED <--------");
     }
